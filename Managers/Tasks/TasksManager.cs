@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using System.ComponentModel.DataAnnotations;
+using Models;
 using Repositories.Tasks;
 
 namespace Managers.Tasks;
@@ -31,15 +32,15 @@ public class TasksManager : ITasksManager
   {
     if (task == null)
     {
-      throw new ArgumentException("Task is null");
+      throw new ValidationException("Task is null");
     }
 
     switch (task.Description.Trim().Length)
     {
       case < MinDescriptionLength:
-        throw new ArgumentException($"Description must be at least {MinDescriptionLength} characters");
+        throw new ValidationException($"Description must be at least {MinDescriptionLength} characters");
       case > MaxDescriptionLength:
-        throw new ArgumentException($"Description must be at most {MaxDescriptionLength} characters");
+        throw new ValidationException($"Description must be at most {MaxDescriptionLength} characters");
     }
   }
 

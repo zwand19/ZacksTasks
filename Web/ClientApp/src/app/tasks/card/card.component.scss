@@ -1,8 +1,11 @@
+$card-padding: 20px;
+
 mat-card {
   display: inline-block;
-  width: 300px;
-  padding: 20px;
+  width: 100%;
+  padding: $card-padding;
   height: 180px;
+  cursor: pointer;
 }
 
 .description {
@@ -24,4 +27,12 @@ mat-card {
 
 mat-card:hover button {
   display: block;
+}
+
+.created {
+  position: absolute;
+  left: $card-padding;
+  bottom: $card-padding - 5px;
+  // TODO: use proper angular material color scheme
+  color: #898989;
 }

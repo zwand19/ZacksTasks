@@ -12,11 +12,7 @@ export class TasksService {
     const subject = new ReplaySubject<Task[]>();
     this.http.get<Task[]>('api/v1/tasks').subscribe({
       next: (tasks => {
-        tasks.forEach(task => {
-          console.log('Before: ' + task.dateCreated);
-          task.dateCreated = new Date(task.dateCreated + 'Z').toLocaleString();
-          console.log('After: ' + task.dateCreated);
-        });
+        tasks.forEach(task => task.dateCreated = new Date(task.dateCreated + 'Z').toLocaleString());
         subject.next(tasks);
       }),
       error: (error => {

@@ -1,15 +1,16 @@
-﻿<mat-card>
+﻿<mat-card (click)="taskClicked()">
   <mat-card-title>Task</mat-card-title>
-  <mat-card-subtitle>Created {{task.dateCreated | timeago}}</mat-card-subtitle>
   <div class="description">
     {{task.description}}
   </div>
+
+  <div class="created">Created {{task.dateCreated | timeago}}</div>
 
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="delete()">Delete</button>
   </mat-menu>
 
-  <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-button">
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-button" (click)="$event.stopPropagation()">
     <mat-icon>more_vert</mat-icon>
   </button>
 </mat-card>

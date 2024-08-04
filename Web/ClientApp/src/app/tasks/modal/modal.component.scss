@@ -1,0 +1,18 @@
+@use '@angular/material' as mat;
+
+$modal-padding: 30px;
+
+.modal {
+  min-width: 45vw;
+  min-height: 30vh;
+  padding: $modal-padding;
+}
+
+.time {
+  position: absolute;
+  left: $modal-padding;
+  bottom: $modal-padding;
+  font-size: 13px;
+  // TODO: use proper angular material color scheme
+  color: #898989;
+}

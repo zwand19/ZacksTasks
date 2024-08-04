@@ -1,6 +1,7 @@
 ﻿app-task {
   display: inline-block;
   margin: 0 10px 10px 0;
+  width: calc(20% - 10px);
 }
 
 h4 {
@@ -10,4 +11,28 @@ h4 {
 .tasks {
   display: flex;
   flex-wrap: wrap;
+}
+
+@media (max-width: 1400px) {
+  app-task {
+    width: calc(25% - 10px);
+  }
+}
+
+@media (max-width: 1200px) {
+  app-task {
+    width: calc(33.3% - 10px);
+  }
+}
+
+@media (max-width: 920px) {
+  app-task {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 680px) {
+  app-task {
+    width: 100%;
+  }
 }

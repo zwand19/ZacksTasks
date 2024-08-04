@@ -1,6 +1,7 @@
 using Managers.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using OriginTest.Middleware;
 using Repositories;
 using Repositories.Tasks;
 
@@ -15,6 +16,7 @@ builder.Services.AddMvc(options => options.EnableEndpointRouting = false);
 builder.Services.AddDbContext<ZackTasksDbContext>(options =>
   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddSpaStaticFiles(configuration => configuration.RootPath = "ClientApp/dist");
+builder.Services.AddHttpLogging(_ => { });
 
 var app = builder.Build();
 
@@ -25,6 +27,9 @@ if (!app.Environment.IsDevelopment())
   app.UseHsts();
 }
 
+app.UseHttpLogging();
+app.UseExceptionHandlingMiddleware();
+app.UseLoggingMiddleware();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

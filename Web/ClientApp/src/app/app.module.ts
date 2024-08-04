@@ -11,13 +11,15 @@ import { ViewTaskComponent } from "./tasks/card/card.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SharedModule } from "../shared/shared.module";
 import { TimeagoCustomFormatter, TimeagoFormatter, TimeagoIntl, TimeagoModule } from "ngx-timeago";
+import { TaskModalComponent } from "./tasks/modal/modal.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CreateTaskComponent,
-    ViewTaskComponent
+    ViewTaskComponent,
+    TaskModalComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
