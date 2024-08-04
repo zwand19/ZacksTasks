@@ -11,7 +11,7 @@ using Repositories;
 
 namespace Repositories.Migrations
 {
-    [DbContext(typeof(OriginDbContext))]
+    [DbContext(typeof(ZackTasksDbContext))]
     [Migration("20240803014435_InitialMigration")]
     partial class InitialMigration
     {

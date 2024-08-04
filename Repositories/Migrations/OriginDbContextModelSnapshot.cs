@@ -10,7 +10,7 @@ using Repositories;
 
 namespace Repositories.Migrations
 {
-    [DbContext(typeof(OriginDbContext))]
+    [DbContext(typeof(ZackTasksDbContext))]
     partial class OriginDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

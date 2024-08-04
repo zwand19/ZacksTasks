@@ -1,0 +1,4 @@
+Future enhancements:
+- Create a form utility service to wrap API calls with easy way to provide error/success messaging and to disable inputs while saving
+- Create a BaseEntityController, Manager, Repository for ease of  adding new models
+- Change DI to pull in all interfaces/implementations without needing to add one by one

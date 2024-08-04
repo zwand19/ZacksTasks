@@ -1,0 +1,8 @@
+﻿<form (ngSubmit)="save()">
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput name="description" [(ngModel)]="description" minlength="2" maxlength="1000" />
+  </mat-form-field>
+
+  <button mat-button type="submit" [disabled]="!isValidDescription() || saving">Create</button>
+</form>

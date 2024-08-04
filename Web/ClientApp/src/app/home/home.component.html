@@ -1,0 +1,8 @@
+<h1>Zack's Tasks</h1>
+
+<div class="tasks">
+  <app-task *ngFor="let task of tasks" [task]="task" (deleted)="taskDeleted(task)"></app-task>
+</div>
+
+<h4>Add new task</h4>
+<app-create-task (created)="tasks.push($event)"></app-create-task>

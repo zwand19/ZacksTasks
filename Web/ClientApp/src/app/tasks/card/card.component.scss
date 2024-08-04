@@ -1,0 +1,27 @@
+mat-card {
+  display: inline-block;
+  width: 300px;
+  padding: 20px;
+  height: 180px;
+}
+
+.description {
+  max-height: 100px;
+  display: -webkit-box;
+  // todo: support non-webkit browsers
+  -webkit-line-clamp: 4; /* Number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: none;
+}
+
+mat-card:hover button {
+  display: block;
+}
