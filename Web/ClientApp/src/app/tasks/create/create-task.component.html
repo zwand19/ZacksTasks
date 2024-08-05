@@ -4,5 +4,8 @@
     <input matInput name="description" [(ngModel)]="description" minlength="2" maxlength="1000" />
   </mat-form-field>
 
-  <button mat-button type="submit" [disabled]="!isValidDescription() || saving">Create</button>
+  <button mat-button type="submit" [disabled]="!isValidDescription() || saving" *ngIf="!useAI || !saving">
+    {{useAI ? 'Create sub-tasks' : 'Create'}}
+  </button>
+  <mat-spinner *ngIf="useAI && saving"></mat-spinner>
 </form>

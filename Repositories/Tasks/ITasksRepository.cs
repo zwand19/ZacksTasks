@@ -6,7 +6,11 @@ public interface ITasksRepository
 {
   Task Delete(int id);
   
-  Task<ZackTask> Create(ZackTask task);
+  Task DeleteAll();
+  
+  Task Create(ZackTask task);
+  
+  Task Create(ZackTask[] tasks);
 
   Task<IList<ZackTask>> GetAll();
 }

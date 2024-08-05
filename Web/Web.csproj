@@ -34,6 +34,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\AI\AI.csproj" />
       <ProjectReference Include="..\Managers\Managers.csproj" />
       <ProjectReference Include="..\Repositories\Repositories.csproj" />
     </ItemGroup>

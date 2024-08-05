@@ -8,4 +8,12 @@ public class RepositoryUtility<T> : IRepositoryUtility<T> where T : BaseEntity
   {
     entity.DateCreated = DateTime.UtcNow;
   }
+
+  public void PrepForInsert(IList<T> entities)
+  {
+    foreach (var entity in entities)
+    {
+      PrepForInsert(entity);
+    }
+  }
 }

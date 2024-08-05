@@ -6,3 +6,11 @@
 
 <h4>Add new task</h4>
 <app-create-task (created)="tasks.push($event)"></app-create-task>
+
+<div *ngIf="settings?.openAIEnabled">
+  <h4>Use AI to create sub-tasks</h4>
+  <app-create-task (created)="tasks.push($event)" [useAI]="true"></app-create-task>
+</div>
+
+<h4 *ngIf="tasks.length">Start over</h4>
+<button mat-stroked-button color="warn" (click)="deleteAll()" *ngIf="tasks.length">Delete all</button>

@@ -1,4 +1,5 @@
-﻿using Managers.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using Managers.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 
@@ -29,10 +30,28 @@ public class TasksController : ControllerBase
     return _tasksManager.Create(task);
   }
 
+  [HttpPost]
+  [Route("breakdown")]
+  public Task<ZackTask[]> CreateSubTasks([FromBody] ZackTask task)
+  {
+    if (string.IsNullOrWhiteSpace(task.Description))
+    {
+      throw new ValidationException();
+    }
+    
+    return _tasksManager.CreateSubTasks(task.Description);
+  }
+
   [HttpDelete]
   [Route("{id:int}")]
   public Task Delete(int id)
   {
     return _tasksManager.Delete(id);
+  }
+
+  [HttpDelete]
+  public Task DeleteAll()
+  {
+    return _tasksManager.DeleteAll();
   }
 }

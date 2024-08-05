@@ -1,3 +1,5 @@
+using AI;
+using AI.OpenAI;
 using Managers.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Models;
@@ -12,6 +14,8 @@ builder.Services.AddControllers();
 builder.Services.AddTransient<IRepositoryUtility<ZackTask>, RepositoryUtility<ZackTask>>();
 builder.Services.AddTransient<ITasksRepository, TasksRepository>();
 builder.Services.AddTransient<ITasksManager, TasksManager>();
+builder.Services.AddTransient<IOpenAIClient, OpenAIClient>();
+builder.Services.AddTransient<IAITaskCreator, AITaskCreator>();
 builder.Services.AddMvc(options => options.EnableEndpointRouting = false);
 builder.Services.AddDbContext<ZackTasksDbContext>(options =>
   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

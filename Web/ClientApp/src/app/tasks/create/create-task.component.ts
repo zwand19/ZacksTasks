@@ -1,7 +1,7 @@
-﻿import { Component, EventEmitter, Output } from '@angular/core';
+﻿import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { Task } from "../task";
 import { TasksService } from "../tasks.service";
-import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-create-task',
@@ -10,6 +10,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 })
 export class CreateTaskComponent {
   @Output() created = new EventEmitter<Task>();
+  @Input() useAI: boolean;
   description: string;
   saving: boolean;
 
@@ -20,17 +21,31 @@ export class CreateTaskComponent {
     const task = new Task();
     task.description = this.description;
     this.saving = true;
-    this.tasksService.create(task).subscribe({
-      next: (task => {
-        this.description = '';
-        this.saving = false;
-        this.created.emit(task);
-      }),
-      error: (() => {
-        this.saving = false;
-        this.matSnackBar.open("Failed to create task");
-      })
-    });
+    if (this.useAI) {
+      this.tasksService.createSubTasksFromAI(task).subscribe({
+        next: (tasks => {
+          this.description = '';
+          this.saving = false;
+          tasks.forEach(t => this.created.emit(t));
+        }),
+        error: (() => {
+          this.saving = false;
+          this.matSnackBar.open("Failed to create sub-tasks", '', {duration: 5000});
+        })
+      });
+    } else {
+      this.tasksService.create(task).subscribe({
+        next: (task => {
+          this.description = '';
+          this.saving = false;
+          this.created.emit(task);
+        }),
+        error: (() => {
+          this.saving = false;
+          this.matSnackBar.open("Failed to create task", '', {duration: 5000});
+        })
+      });
+    }
   }
 
   isValidDescription(): boolean {

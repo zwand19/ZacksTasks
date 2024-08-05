@@ -1,4 +1,4 @@
 ﻿export abstract class BaseEntity {
-  id: number;
-  dateCreated: string;
+  id?: number;
+  dateCreated?: string;
 }

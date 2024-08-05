@@ -22,14 +22,22 @@ public class TasksRepository : ITasksRepository
     await _context.SaveChangesAsync();
   }
 
-  public async Task<ZackTask> Create(ZackTask task)
+  public Task DeleteAll()
   {
-    _repositoryUtility.PrepForInsert(task);
-    
-    _context.Tasks.Add(task);
+    return _context.Tasks.ExecuteDeleteAsync();
+  }
+
+  public Task Create(ZackTask task)
+  {
+    return Create(new[] {task});
+  }
+
+  public async Task Create(ZackTask[] tasks)
+  {
+    _repositoryUtility.PrepForInsert(tasks);
+
+    _context.Tasks.AddRange(tasks);
     await _context.SaveChangesAsync();
-    
-    return task;
   }
 
   public async Task<IList<ZackTask>> GetAll()

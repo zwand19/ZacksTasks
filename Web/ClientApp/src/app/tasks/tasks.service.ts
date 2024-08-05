@@ -1,7 +1,7 @@
-﻿import {Injectable} from "@angular/core";
+﻿import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 import { Observable, ReplaySubject } from "rxjs";
-import {Task} from "./task";
-import {HttpClient} from "@angular/common/http";
+import { Task } from "./task";
 
 @Injectable({providedIn: 'root'})
 export class TasksService {
@@ -31,5 +31,13 @@ export class TasksService {
 
   delete(id: number): Observable<Object> {
     return this.http.delete(`api/v1/tasks/${id}`);
+  }
+
+  createSubTasksFromAI(task: Task): Observable<Task[]> {
+    return this.http.post<Task[]>('api/v1/tasks/breakdown', task);
+  }
+
+  deleteAll(): Observable<Object> {
+    return this.http.delete(`api/v1/tasks`);
   }
 }

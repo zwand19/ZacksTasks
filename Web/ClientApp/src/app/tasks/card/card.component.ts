@@ -17,9 +17,7 @@ export class ViewTaskComponent {
   }
 
   delete() {
-    this.tasksService.delete(this.task.id).subscribe(() => {
-      this.deleted.emit();
-    });
+    this.tasksService.delete(this.task.id!).subscribe(() => this.deleted.emit());
   }
 
   taskClicked() {
