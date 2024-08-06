@@ -20,7 +20,7 @@ public class LoggingMiddleware
     try
     {
       await _next(httpContext);
-      
+
       var statusCode = httpContext.Response.StatusCode;
       _logger.LogInformation("Request: {RequestMethod} {RequestPath} responded with {StatusCode}", httpContext.Request.Method,
         httpContext.Request.Path, statusCode);
@@ -44,6 +44,7 @@ public class LoggingMiddleware
     {
       _logger.LogError(ex, "An unhandled exception has occurred while executing the request.");
     }
+
     return false;
   }
 }

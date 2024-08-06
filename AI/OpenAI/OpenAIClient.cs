@@ -33,8 +33,9 @@ public class OpenAIClient : IOpenAIClient
     var client = new ChatClient(_model, _apiKey);
 
     var chatCompletion = await client.CompleteChatAsync(prompts.Select(p => new UserChatMessage(p)));
-    return chatCompletion.Value.Content.Where(c => c.Kind == ChatMessageContentPartKind.Text)
-      .SelectMany(c => c.Text.Split('\n').Select(t => t.TrimStart('-', ' ')))
-      .ToArray();
+    var textContent = chatCompletion.Value.Content.Where(c => c.Kind == ChatMessageContentPartKind.Text);
+    
+    // return each line, removing the '-' bullet points that ChatGPT typically adds
+    return textContent.SelectMany(c => c.Text.Split('\n').Select(t => t.TrimStart('-').Trim())).ToArray();
   }
 }

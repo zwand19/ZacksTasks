@@ -50,6 +50,7 @@ export class CreateTaskComponent {
 
   isValidDescription(): boolean {
     // whatever rules we may have for a valid description
-    return !!this.description && this.description.trim().length > 2;
+    // TODO: unit tests
+    return !!this.description && this.description.trim().length >= 2 && this.description.trim().length <= 1000;
   }
 }

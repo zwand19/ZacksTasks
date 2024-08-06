@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Task } from "../tasks/task";
@@ -12,7 +12,7 @@ import { ConfirmModal } from "../../shared/confirm-modal/confirm.modal";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   tasks: Task[] = [];
   settings: Settings;
 

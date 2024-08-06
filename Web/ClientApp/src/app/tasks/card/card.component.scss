@@ -6,6 +6,10 @@ mat-card {
   padding: $card-padding;
   height: 180px;
   cursor: pointer;
+
+  &:hover button {
+    display: block;
+  }
 }
 
 .description {
@@ -23,10 +27,6 @@ mat-card {
   top: 12px;
   right: 12px;
   display: none;
-}
-
-mat-card:hover button {
-  display: block;
 }
 
 .created {
