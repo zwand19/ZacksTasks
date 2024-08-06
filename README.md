@@ -59,7 +59,7 @@ The application comes pre-configured with a default connection string in Web/app
 
 ```
 "ConnectionStrings": {
-    "DefaultConnection": "Server=\\SQLEXPRESS;Database=OriginDigitalDb;Trusted_Connection=True;Encrypt=False;"
+    "DefaultConnection": "Server=.\\SQLEXPRESS;Database=OriginDigitalDb;Trusted_Connection=True;Encrypt=False;"
 }
 ```
 
